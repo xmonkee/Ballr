@@ -7,9 +7,10 @@
 
     <!-- Le styles -->
     <!-- {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css')}} -->
-    {{ HTML::style('/theme/bootstrap/css/bootstrap.min.css')}}
-    {{ HTML::style('/css/boostrap.min.css')}}
-    <!-- {{ HTML::style('/theme/bootstrap/css/united/bootstrap.css')}}  -->
+    <!-- {{ HTML::style('/theme/bootstrap/css/bootstrap.min.css')}} -->
+    <!-- {{ HTML::style('/css/boostrap.min.css')}} -->
+    <!-- {{ HTML::style('/css/boostrap.united.min.css')}} -->
+    {{ HTML::style('/css/bootstrap.css')}} 
     <!-- {{ HTML::style('/theme/css/main.css')}} -->
     <!-- {{ HTML::style('/theme/css/jquery.rating.css')}}  -->
 

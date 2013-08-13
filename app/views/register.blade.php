@@ -1,4 +1,4 @@
-@extends('theme.main')
+@extends('layout.main')
 
 @section('title')
 Create an Account
