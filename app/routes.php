@@ -28,8 +28,6 @@ Route::get('test',function(){
 	echo time();
 	echo '<img src="'. '/uploads/thumbnails/' . $filename .'" />';
 });
-Route::controller('admin', 'AdminController');
 Route::controller('vendors', 'VendorsController');
 Route::controller('products', 'ProductsController');
-Route::controller('categories', 'CategoriesController');
 Route::controller('/', 'HomeController');

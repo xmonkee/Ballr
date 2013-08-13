@@ -9,11 +9,8 @@ class ProductsController extends BaseController {
      */
     public function getIndex()
     {
-        // $products = Category::where('name','=','suits')->products;
-        // $products = Category::products();
-        // return '<pre>'.var_dump($products).'</pre>';
-        $poducts = Product::all();
-
+        $products = Product::all();
+        return View::make('products.index')->with(array('products'=> $products));
     }
 
 }
