@@ -7,9 +7,20 @@ class Product extends Eloquent {
         'image1' => 'required',
     );
 
-    public function __construct(){
-        if(!($this->vendor_id = Auth::user()->id)) throw new Exception('Can\'t create Product'); 
+    public static function boot()
+    {
+        parent::boot();
+
+        Product::saving(function($product){
+            $product->vendor()->associate(Auth::user());
+        });
+
     }
+
+    
+    // public function __construct(){
+    //     if(!($this->vendor()->associate(Auth::user()))) throw new Exception('Can\'t create Product'); 
+    // }
 
     public function category()
     {

@@ -12,8 +12,8 @@ class ProductsController extends BaseController {
         // $products = Category::where('name','=','suits')->products;
         // $products = Category::products();
         // return '<pre>'.var_dump($products).'</pre>';
-        $category = Category::where('name','=','Suits')->first()->products->first()->name;
-        return '<pre>'.var_dump($category).'</pre>';
+        $poducts = Product::all();
+
     }
 
 }
