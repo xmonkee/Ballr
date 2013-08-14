@@ -8,14 +8,14 @@
 		@include('layout/header')
 		@include('layout/nav')
 		<div class="row">
-			@include('layout/breadcrumb');
+			@include('layout/breadcrumb')
 			<div class="span12">
 				<h1> <!-- Page Title -->
 					@yield('title') 
 				</h1>
-				<p> <!-- MAIN CONTENT BEGINS -->	
+				<!-- MAIN CONTENT BEGINS -->	
 					@yield('main') 
-				</p> <!-- MAIN CONTENT ENDS -->
+				<!-- MAIN CONTENT ENDS -->
 			</div>
 		</div>
 		@include('layout/footer')
@@ -23,5 +23,7 @@
 	@include('layout/foot')
 </body>
 </html>
+
+
 
 

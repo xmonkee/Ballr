@@ -1,4 +1,4 @@
-@extends('theme.main')
+@extends('layout.main')
 
 @section('title')
 Login to manage your products
@@ -9,15 +9,26 @@ Login to manage your products
     <h3>	<span class="alert-error">{{Session::get('message')}}</span>	</h3>
 	<br>
 @endif
-{{Form::open(array('url'=>'login'))}}
-{{Form::label('email','Email')}}
-{{Form::email('email')}}
-<br>
-{{Form::label('password','Password')}}
-{{Form::password('password')}}
-<br>
-{{Form::label('isRemember','Keep me logged in')}}
-{{Form::checkbox('isRemember', 'Remember me',true)}}
-<br>
-{{Form::submit('Login', array('class' => 'btn btn-primary btn-large'))}}
+{{Form::open(array('url'=>'login', 'class'=>'form-horizontal well'))}}
+<fieldset>
+	<div class="control-group">
+		{{Form::label('email','Email ',array("class"=>"control-label"))}}
+		<div class="control">
+			{{Form::email('email')}}
+		</div>
+	</div>
+	<div class="control-group">
+		{{Form::label('password','Passwrod ',array("class"=>"control-label"))}}
+		<div class="control">
+			{{Form::password('password')}}
+		</div>
+	</div>
+	<div class="control-group">
+		{{Form::label('isRemember','Keep me logged in ',array("class"=>"control-label"))}}
+		<div class="control">
+			{{Form::checkbox('isRemember','Remember me', true)}}
+		</div>
+	</div>
+</fieldset>
+{{Form::submit('Login', array('class' => 'btn btn-primary'))}}
 @stop

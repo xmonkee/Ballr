@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/main') -->
 
 @section('title')
 Products
@@ -6,19 +6,23 @@ Products
 
 @section('main')
 <div class="row">
-	<div class="span9"><!-- start categories -->
+	<div class="span2"><!-- start categories -->
+		Sidebar
+	</div>
+	<div class="span10"><!-- start categories -->
 		<ul class="thumbnails">
 			@foreach($products as $product)
-			<li class="span3">
-				<div class="thumbnail">
-					<a href="listings.html"><img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}"></a>
-					<div class="caption">
-						<a href="listings.html"><h5>{{$product->name}}</h5></a>
+				<li class="span2">
+					<div class="thumbnail">
+						<a href="{{asset(Config::get('ballr.images').$product->image1)}}"><img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}"></a>
+						<div class="caption">
+							<a href="{{asset(Config::get('ballr.images').$product->image1)}}"><h5>{{$product->name}}</h5></a>
+						</div>
 					</div>
-				</div>
-			</li>
+				</li>
 			@endforeach
 		</ul>
+		{{$products->links()}}
 	</div><!-- end categories -->
 </div>
 @stop
