@@ -5,6 +5,8 @@
 				<div class="container" style="width: auto;">
 					<div class="nav-collapse">
 						<ul class="nav">
+							<li><a href="{{action('ProductsController@getIndex')}}">All</a></li>
+							<li class="divider-vertical"></li>
 							@foreach(Category::all() as $category)
 							<li><a href="/categories/{{$category->id}}">{{$category->name}}</a></li>
 							@endforeach

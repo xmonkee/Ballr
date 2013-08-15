@@ -9,7 +9,7 @@ Login to manage your products
     <h3>	<span class="alert-error">{{Session::get('message')}}</span>	</h3>
 	<br>
 @endif
-{{Form::open(array('url'=>'login', 'class'=>'form-horizontal well'))}}
+{{Form::open(array('url'=>'login', 'class'=>'well'))}}
 <fieldset>
 	<div class="control-group">
 		{{Form::label('email','Email ',array("class"=>"control-label"))}}
@@ -31,4 +31,5 @@ Login to manage your products
 	</div>
 </fieldset>
 {{Form::submit('Login', array('class' => 'btn btn-primary'))}}
+{{Form::close()}}
 @stop
