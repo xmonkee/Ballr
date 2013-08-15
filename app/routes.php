@@ -15,7 +15,7 @@ Route::controller('products', 'ProductsController');
 Route::get('categories/{id}', function($id){
 	if(!$category = Category::find($id)) throw new Exception('Not Found');
 	if(!$products = $category->products()->paginate(Config::get('ballr.pages'))) throw new Exception('Not Found');
-	return View::make('products.index')->with(array('products'=>$products));
+	return View::make('products.list')->with(array('products'=>$products));
 });
 Route::controller('/', 'HomeController');
 
