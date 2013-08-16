@@ -48,7 +48,7 @@ Route::filter('auth',function(){
 	if(Auth::guest()) 
 	{
 		Session::flash('message','You need to login for this action');
-		return Redirect::to('login');
+		return Redirect::guest('login');
 	}
 });
 

@@ -13,4 +13,10 @@ class ProductsController extends BaseController {
         return View::make('products.list')->with(array('products'=> $products));
     }
 
+    public function showProduct($id)
+    {
+        $prduct = Product::find($id);
+        return View::make('products.show')->with(array('product'=>$product));
+    }
+
 }

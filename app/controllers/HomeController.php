@@ -23,7 +23,11 @@ class HomeController extends BaseController {
 
 	public function getLogin()
 	{
-        
+        if(Auth::check())
+        {
+            Session::flash('message','You are already logged in');
+            return Redirect::to('/');
+        }
 		return View::make('login');
 	}
 
