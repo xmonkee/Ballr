@@ -15,8 +15,15 @@ class ProductsController extends BaseController {
 
     public function showProduct($id)
     {
-        $prduct = Product::find($id);
+        $product = Product::find($id);
         return View::make('products.show')->with(array('product'=>$product));
+    }
+
+    public function showCategory($id)
+    {
+    if(!$category = Category::find($id)) throw new Exception('Not Found');
+    if(!$products = $category->products()->paginate(Config::get('ballr.pages'))) throw new Exception('Not Found');
+    return View::make('products.list')->with(array('products'=>$products));
     }
 
 }

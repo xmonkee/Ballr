@@ -1,4 +1,4 @@
-@extends('layout/main') -->
+@extends('layout/main') 
 
 @section('title')
 Products
@@ -10,8 +10,8 @@ Products
 </div>
 <div class="product_list">
 	<ul class="nav">
-		@foreach(Category::all() as $category)
-		<li><a class="active" href="/categories/{{$category->id}}">{{$category->name}}</a></li>
+		@foreach(Category::with('products')->get() as $category)
+		<li><a href="{{action('ProductsController@showCategory', $category->id)}}">{{$category->name}} ({{$category->products->count()}})</a></li>
 		<hr>
 		@endforeach
 	</ul>
@@ -21,8 +21,7 @@ Products
 @section('breadcrumb')
 	<ul class="breadcrumb">
 		<li><a href="/">Home</a> <span class="divider">/</span></li>
-		<li><a class="disabled" href="/categories">Account</a> <span class="divider">/</span></li>
-		<li class="active"><a href="/">Register</a></li>
+		<li><a href="{{action('ProductsController@showCategory', $products[0]->category->id)}}">{{$products[0]->category->name}}</a></li>
 	</ul>
 @stop
 
@@ -39,12 +38,14 @@ Products
 		<ul class="thumbnails">
 			@foreach($products as $product)
 				<li class="span2">
+					<a href="{{action('ProductsController@showProduct',$product->id)}}">
 					<div class="thumbnail">
-						<a href="{{asset(Config::get('ballr.images').$product->image1)}}"><img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}"></a>
+					<img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}">
 						<div class="caption">
-							<a href="{{asset(Config::get('ballr.images').$product->image1)}}"><h5>{{$product->name}}</h5></a>
+							<h5>{{$product->name}}</h5>
 						</div>
 					</div>
+				</a>
 				</li>
 			@endforeach
 		</ul>

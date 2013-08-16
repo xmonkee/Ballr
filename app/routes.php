@@ -11,11 +11,12 @@
 */
 
 Route::controller('vendors', 'VendorsController');
-Route::controller('products', 'ProductsController');
-Route::get('categories/{id}', function($id){
-	if(!$category = Category::find($id)) throw new Exception('Not Found');
-	if(!$products = $category->products()->paginate(Config::get('ballr.pages'))) throw new Exception('Not Found');
-	return View::make('products.list')->with(array('products'=>$products));
-});
+
+Route::get('categories/{id}', 'ProductsController@showCategory');
+
+Route::get('products','ProductsController@getIndex') ;
+
+Route::get('products/{id}', 'ProductsController@showProduct');
+
 Route::controller('/', 'HomeController');
 
