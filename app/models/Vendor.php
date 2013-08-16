@@ -4,36 +4,33 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Vendor extends Eloquent implements UserInterface, RemindableInterface {
 
-    protected $guarded = array();
+    protected $fillable = array('name',
+    	'email',
+    	'password',
+    	'image',
+    	'state',
+    	'city',
+    	'address',
+    	'store',
+    	'description');
 
     public static $rules = array(
-    	'name' => 'required',
+    	'name' => 'required|unique:vendors,name',
     	'email' => 'required|email|unique:vendors,email',
     	'password' => 'required|confirmed|min:5',	
 		'image' => 'image',
 		'state' => 'required',
-		'city' => 'required'
+		'city' => 'required',
+		'description' => 'min:10|max:200'
 	);
-
-	public static $bizElements = array(
-		array('name'=>'name','label'=>'Name','type'=>'text'),
-		array('name'=>'address','label'=>'Street Address','type'=>'text'),	
-		array('name'=>'city','label'=>'City','type'=>'text'),
-		array('name'=>'image','label'=>'Logo or Image','type'=>'file')
-		);
-	public static $loginElements = array(
-		array('name'=>'email','label'=>'Email','type'=>'text','extra'=>''),
-		array('name'=>'password','label'=>'Password','type'=>'password','extra'=>''),
-		array('name'=>'password_confirmation','label'=>'Confirm Password','type'=>'password','extra'=>''),
-		);
 
 	public static function create(array $input)
 	{
-        $input = array_except($input, 'password_confirmation');
         $input['password'] = Hash::make($input['password']);
         $input['image'] = Ballr::saveImage($input['image']);
 		return parent::create($input);
 	}
+
 /**
 	 * The database table used by the model.
 	 *

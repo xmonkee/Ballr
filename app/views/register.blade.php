@@ -20,15 +20,21 @@ Create an Account
     <fieldset>
       <div class="span5 no_margin_left">
         <div class="control-group">
-          <label for="name" class="control-label">Your Name</label>
+          <label for="name" class="control-label">Your Store Name</label>
           <div class="controls ">
             {{Form::input('text', 'name')}}
           </div>
         </div>
         <div class="control-group">
+          <label for="description" class="control-label">Short Description</label>
+          <div class="controls">
+            {{Form::textarea('description', NULL,array('rows'=>2))}}
+          </div>
+        </div>
+        <div class="control-group">
           <label for="address" class="control-label">Street Address</label>
           <div class="controls ">
-            {{Form::input('text', 'address')}}
+            {{Form::textarea('address','',array('rows'=>3))}}
           </div>
         </div>
         <div class="control-group">
@@ -46,7 +52,7 @@ Create an Account
       </div>
 
 
-      <div class="span6 no_margin_left">
+      <div class="span5 no_margin_left">
         <div class="control-group">
           <label for="email" class="control-label">Email Address</label>
           <div class="controls">

@@ -37,7 +37,9 @@ class VendorsController extends BaseController {
         // TODO add email reminder for password
         $vendor =Auth::user();
         $input = Input::all();
-        $validation = Validator::make($input, array_except(Vendor::$rules,array('email','password')));
+        $except = array('email','password');
+        if ($input['name'] == $vendor->name) $except[]='name';
+        $validation = Validator::make($input, array_except(Vendor::$rules,$except));
 
         $imagename = $vendor->image;    
         if ($validation->passes())
@@ -47,6 +49,7 @@ class VendorsController extends BaseController {
             $vendor->city=$input['city'];
             $vendor->state=$input['state'];
             $vendor->address=$input['address'];
+            $vendor->description=$input['description'];
             $vendor->image=$imagename;
             $vendor->save();
 
