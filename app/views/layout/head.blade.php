@@ -5,6 +5,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    {{ HTML::style('/css/bootstrap.min.css')}} 
+    {{ HTML::style('/css/bootstrap.united.min.css')}} 
     {{ HTML::style('/css/bootstrap-responsive.min.css')}} 
 

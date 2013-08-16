@@ -6,62 +6,79 @@ Create an Account
 
 
 @section('main')
-
-@if ($errors->any())
+  <div class="breadcrumb">
+    Register your Store 
+  </div>
+  @if ($errors->any())
     <ul>
-        {{ implode('', $errors->all('<li class="alert-error">:message</li>')) }}
+      {{ implode('', $errors->all('<li class="alert-error">:message</li>')) }}
     </ul>
-@endif
+  @endif
 
-{{ Form::open(array('url' => 'register', 'files' => true, 'class'=>'form-horizontal')) }}
-   <fieldset>
-   <div class="span6 no_margin_left">
-       <legend>Your Personal Details</legend>
 
-        @foreach(Vendor::$bizElements as $e)
+  {{ Form::open(array('url' => 'register', 'files' => true, 'class'=>'well')) }}
+    <fieldset>
+      <div class="span5 no_margin_left">
         <div class="control-group">
-            <label for="{{$e['name']}}" class="control-label">{{$e['label']}}</label>
-            <div class="controls docs-input-sizes">
-              <input type="{{$e['type']}}" name="{{$e['name']}}" class="span4">  
-            </div>
-       </div>
-      
-        @endforeach
-
+          <label for="name" class="control-label">Your Name</label>
+          <div class="controls ">
+            {{Form::input('text', 'name')}}
+          </div>
+        </div>
         <div class="control-group">
-            <label for="state" class="control-label">State</label>
-            <div class="controls docs-input-sizes">
+          <label for="address" class="control-label">Street Address</label>
+          <div class="controls ">
+            {{Form::input('text', 'address')}}
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="city" class="control-label">City</label>
+          <div class="controls ">
+            {{Form::input('text', 'city')}}
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="state" class="control-label">State</label>
+          <div class="controls ">
             {{ Form::select('state',State::statelist()) }}
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
 
-   <div class="span6 no_margin_left">
-       <legend>Your Login Details</legend>
-
-        @foreach(Vendor::$loginElements as $e)
-
+      <div class="span6 no_margin_left">
         <div class="control-group">
-            <label for="{{$e['name']}}" class="control-label">{{$e['label']}}</label>
-            <div class="controls docs-input-sizes">
-              <input type="{{$e['type']}}" name="{{$e['name']}}" class="span4">  
-            </div>
-       </div>
-      
-        @endforeach
-
-         <div class="control-group">
-            <div class="controls docs-input-sizes">
-            {{ Form::submit('Submit', array('class' => 'btn btn-primary btn-large pull-right')) }}
-            </div>
+          <label for="email" class="control-label">Email Address</label>
+          <div class="controls">
+            {{Form::input('email', 'email')}}
+          </div>
         </div>
-    </div>
-
-
-
-
-{{ Form::close() }}
+        <div class="control-group">
+          <label for="password" class="control-label">Password</label>
+          <div class="controls ">
+            {{Form::input('password', 'password')}}
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="password_confirmation" class="control-label">Re-enter Password</label>
+          <div class="controls ">
+            {{Form::input('password', 'password_confirmation')}}
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="image" class="control-label">Image or Logo</label>
+          <div class="controls ">
+            {{Form::input('file', 'image')}}
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls ">
+            {{ Form::submit('Submit', array('class' => 'btn btn-primary btn-large')) }}
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  {{ Form::close() }}
 @stop
 
 

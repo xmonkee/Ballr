@@ -2,12 +2,13 @@
 
 @section('main')
 
+<div class="breadcrumb">
 @if(Auth::check())
-	<h2>Welcome {{Auth::user()->name}} </h2>
-	<br>
+	Welcome {{Auth::user()->name}} 
 @else
-	<h2> You are not logged in </h2>
+	You are not logged in
 @endif
+</div>
 
 @if(Session::has('message'))
     <span class="alert-error">{{Session::get('message')}}</span>
@@ -20,7 +21,7 @@
 <br>
 {{link_to('login', 'Login to your profile')}}
 <br>
-{{link_to('products/create', 'Add a product')}}
+{{link_to('products', 'View Products')}}
 <br>
 {{link_to('logout','Logout')}}
 <br>
