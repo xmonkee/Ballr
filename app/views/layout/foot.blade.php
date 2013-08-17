@@ -1,5 +1,3 @@
 
-<!-- <script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-<script src="js/jquery.rating.pack.js"></script> -->
-
+{{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')}}
+{{HTML::script('js/script.js')}}

@@ -39,7 +39,7 @@
 		<div class="row">
 
 			<div class="span4"> <!-- Main Image -->
-				<a href="{{asset(Ballr::getImage($product->image1))}}">
+				<a id="main-image" href="{{asset(Ballr::getImage($product->image1))}}">
 					<img alt="" src="{{asset(Ballr::getImage($product->image1))}}" />
 				</a>
 			</div>
@@ -47,7 +47,7 @@
 			<div class="span1"> <!-- thumbnails -->
 				@foreach(array('image1','image2','image3') as $imagekey)
 				@if($product->$imagekey)	
-					<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail">
+					<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail image-loader">
 						<img src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
 					</a>
 				@endif
