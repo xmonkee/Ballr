@@ -35,7 +35,7 @@ class HomeController extends BaseController {
 	public function postLogin()
     {
         If (Auth::attempt(array('email'=>Input::get('email'),'password'=>Input::get('password')),Input::get('isRemember'))) {
-            return Redirect::intended('manage');
+            return Redirect::intended('vendors');
         }
         else {
             Session::flash('message', 'Email or Password incorrect');

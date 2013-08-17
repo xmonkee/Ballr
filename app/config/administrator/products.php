@@ -49,11 +49,18 @@ return array(
 			'title' => 'Name',
 			'type' => 'text',
 		),
+
 		'category' => array(
 			'title' => 'Category',
 			'type' => 'relationship',
 			'name_field' => 'name'
 		),
+
+		'description' => array(
+			'title' => 'Description (optional)',
+			'type' => 'textarea',
+		),
+
 		'image1' => array(
 		    'title' => 'Main Image',
 		    'type' => 'image',
@@ -63,11 +70,11 @@ return array(
 		    'size_limit' => 3,
 		    'sizes' => array(
 		        array(200, 200, 'crop', public_path() . '/uploads/thumbnails/', 100),
-		    )
+		    ),
 		),
 
 		'image2' => array(
-		    'title' => 'Second Image (optional)',
+		    'title' => 'Optional Image',
 		    'type' => 'image',
 		    'location' => storage_path() . '/uploads/',
 		    'naming' => 'random',
@@ -75,21 +82,35 @@ return array(
 		    'size_limit' => 3,
 		    'sizes' => array(
 		        array(200, 200, 'crop', public_path() . '/uploads/thumbnails/', 100),
-		    )
+		    ),
 		),
-		'description' => array(
-			'title' => 'Description (optional)',
-			'type' => 'textarea',
-		),
-		'minunits' => array(
-			'title' => 'Minimum units sold',
-			'type' => 'number',
-		),
-		'maxunits' => array(
-			'title' => 'Maximum capacity',
-			'type' => 'number',
-		),
-	),
 
+		'image3' => array(
+		    'title' => 'Optional Image',
+		    'type' => 'image',
+		    'location' => storage_path() . '/uploads/',
+		    'naming' => 'random',
+		    'length' => 20,
+		    'size_limit' => 3,
+		    'sizes' => array(
+		        array(200, 200, 'crop', public_path() . '/uploads/thumbnails/', 100),
+		    ),
+		),
+
+		'price' => array(
+			'title' => 'Price (optional)',
+			'type' => 'number',
+		),
+
+		'minunits' => array(
+			'title' => 'Minimum units (optional)',
+			'type' => 'number',
+		),
+
+		// 'maxunits' => array(
+		// 	'title' => 'Maximum capacity',
+		// 	'type' => 'number',
+		// ),
+	),
 );
 

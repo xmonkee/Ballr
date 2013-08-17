@@ -1,9 +1,11 @@
 <?php
 
 Class Ballr{
-	public static function saveImage($image){
+	public static function saveImage($image)
+	{
 		if(is_null($image)) return '';
-		else{
+		else
+		{
 			$newfilepath=storage_path().Config::get('ballr.images');
 			$thumbspath=storage_path().Config::get('ballr.thumbs');
 	        $newname=sha1(time().Str::random(5)).'.'.$image->guessExtension();
@@ -13,5 +15,15 @@ Class Ballr{
 			$image->writeImage($thumbspath. $newname);
 	        return $newname;
 		}	
-}
+
+	}
+
+	public static function getImage($imagename)
+	{
+		return Config::get('ballr.images').$imagename;
+	}
+	public static function getThumb($imagename)
+	{
+		return Config::get('ballr.thumbs').$imagename;
+	}
 }

@@ -19,11 +19,11 @@
 @stop
 
 @section('breadcrumb')
-	<ul class="breadcrumb">
-		<li><a href="/">Home</a> <span class="divider">/</span></li>
-		<li><a href="{{action('ProductsController@showCategory', $product->category->id)}}">{{$product->category->name}}</a><span class="divider">/</span></li>
-		<li class="active"><a href="#">{{$product->name}}</a></li>
-	</ul>
+<ul class="breadcrumb">
+	<li><a href="/">Home</a> <span class="divider">/</span></li>
+	<li><a href="{{action('ProductsController@showCategory', $product->category->id)}}">{{$product->category->name}}</a><span class="divider">/</span></li>
+	<li class="active"><a href="#">{{$product->name}}</a></li>
+</ul>
 @stop
 
 @section('main')
@@ -32,24 +32,34 @@
 		@yield('sidebar') 
 	</div>
 
-	<div class="span10">
-
+	<div class="span10"> <!-- Title -->
 		@yield('breadcrumb') 
-		
-		<h1>{{$product->name}}</h1>
-	 <hr>
-		<ul class="thumbnails">
-				<li class="span2">
-					<a href="{{action('ProductsController@showProduct',$product->id)}}">
-					<div class="thumbnail">
-					<img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}">
-						<div class="caption">
-							<h5>{{$product->name}}</h5>
-						</div>
-					</div>
+		<h1>@yield('title')</h1>
+		<hr>
+		<div class="row">
+
+			<div class="span4"> <!-- Main Image -->
+				<a href="{{asset(Ballr::getImage($product->image1))}}">
+					<img alt="" src="{{asset(Ballr::getImage($product->image1))}}" />
 				</a>
-				</li>
-		</ul>
-	</div><!-- end categories -->
-</div>
+			</div>
+
+			<div class="span1"> <!-- thumbnails -->
+				@foreach(array('image1','image2','image3') as $imagekey)
+				@if($product->$imagekey)	
+					<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail">
+						<img src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
+					</a>
+				@endif
+				@endforeach
+			</div>
+
+			<div class="span5"> <!-- Description -->
+				{{$product->description}}
+				<br> 
+			</div>		
+
+		</div>	 
+	</div>
+</div><!-- end categories -->
 @stop

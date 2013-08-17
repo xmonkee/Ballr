@@ -16,6 +16,8 @@
 <br>
 {{link_to('vendors/edit', 'Edit your profile')}}
 <br>
+{{link_to('manage', 'manage products')}}
+<br>
 <br>
 {{link_to('logout', 'Logout')}} 
 <br>

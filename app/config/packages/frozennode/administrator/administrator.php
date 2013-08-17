@@ -14,7 +14,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'title' => 'Manage your products',
+	'title' => Auth::user()->name,
 
 	/**
 	 * The path to your model config directory
@@ -60,6 +60,7 @@ return array(
 	{
 		return Auth::check();
 	},
+
 
 	/**
 	 * This determines if you will have a dashboard (whose view you provide in the dashboard_view option) or a non-dashboard home
