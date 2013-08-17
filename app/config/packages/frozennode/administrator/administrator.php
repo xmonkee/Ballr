@@ -14,7 +14,11 @@ return array(
 	 *
 	 * @type string
 	 */
-	'title' => Auth::user()->name,
+	'title' => function()
+	{
+		if(Auth::check) return Auth::user()->name ;
+		else return 'Manage your products';
+	},
 
 	/**
 	 * The path to your model config directory
