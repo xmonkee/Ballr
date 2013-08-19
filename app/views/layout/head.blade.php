@@ -8,9 +8,9 @@
     <!-- {{ HTML::style('/css/bootstrap.united.min.css')}}  -->
     <!-- {{ HTML::style('/css/bootstrap-responsive.min.css')}} -->
     <!-- {{ HTML::style('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css')}}  -->
-    {{HTML::style('//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css')}}
+    <!-- {{HTML::style('//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css')}} -->
     <!-- {{ HTML::style('/css/bootstrap-responsive.min.css')}} -->
-    <!-- {{HTML::style('/css/bootstrap.min.css',array('media'=>'screen'))}} -->
-    <!-- {{HTML::style('/css/bootstrap-theme.min.css')}} -->
+    {{HTML::style('/css/bootstrap.min.css',array('media'=>'screen'))}}
+    {{HTML::style('/css/bootstrap-theme.min.css')}}
 
 
