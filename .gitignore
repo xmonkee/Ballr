@@ -2,4 +2,7 @@
 /vendor
 composer.phar
 composer.lock
+/public/uploads
+/app/storage/uploads
 .DS_Store
+/public/css/old

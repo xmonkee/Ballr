@@ -55,6 +55,7 @@
 			</div>
 
 			<div class="span5"> <!-- Description -->
+				
 				{{$product->description}}
 				<br> 
 			</div>		

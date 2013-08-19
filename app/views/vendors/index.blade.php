@@ -1,4 +1,5 @@
 @extends('layout.main')
+
 @section('title')
 	Welcome {{$vendor->name}}
 @stop
@@ -8,8 +9,9 @@
     <span class="alert-error">{{Session::get('message')}}</span>
 	<br>
 @endif
-    <img src = "{{asset(Config::get('ballr.thumbs').Auth::user()->image)}}" \><br \>
-
+<div class="span3">
+<img src = "{{Ballr::getThumb(Auth::user()->image)}}" \><br \>
+</div>
 <h3>
 
 {{link_to('/', 'Site Home')}} 

@@ -2,14 +2,14 @@
 	- Subcategories
 
 #Views
-	- New Product page
+	- Product page
+		- Add contact vendor info
+		- Add properties
 	- New Landing pages
 		- Home
 		- Vendors
 	- Contact seller information
 	- Sidebar Design
-	- Producut listing page
-		- Products to appear in newFirst sorting
 
 #Controller
 	- Design shop structure
