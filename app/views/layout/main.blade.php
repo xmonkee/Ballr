@@ -4,18 +4,13 @@
 	@include('layout/head')
 </head>
 <body>
-	<div class="container">
-		@include('layout/header')
-		@include('layout/nav')
-		<div class="row">
-			<div class="span12">
-			<!-- MAIN CONTENT BEGINS -->	
-				@yield('main') 
-			<!-- MAIN CONTENT ENDS -->
-			</div>
-		</div>
-		@include('layout/footer')
-	</div> <!-- /container -->
+		<div class="container">
+			@include('layout/header')
+			@yield('main')
+		</div> <!-- /container -->
+	<div class="footer">
+			@include('layout/footer')
+	</div>
 	@include('layout/foot')
 </body>
 </html>
