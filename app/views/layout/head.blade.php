@@ -1,13 +1,20 @@
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>{{Config::get('ballr.name')}} - @yield('title')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{Config::get('ballr.name')}} - @yield('title')</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-    {{HTML::style('/css/bootstrap.min.css')}}
-    {{HTML::style('/css/bootstrap-theme.min.css')}}
-    {{HTML::style('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')}}
-    {{HTML::style('/css/custom.css')}}
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <!-- <link rel="stylesheet" href="/css/bootstrap-theme.min.css"> -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
 
 

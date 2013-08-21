@@ -11,80 +11,63 @@ Create an Account
   </div>
   @if ($errors->any())
     <ul>
-      {{ implode('', $errors->all('<li class="alert-error">:message</li>')) }}
+      {{ implode('', $errors->all('<li class="text-danger">:message</li>')) }}
     </ul>
   @endif
 
-
-  {{ Form::open(array('url' => 'register', 'files' => true, 'class'=>'well')) }}
-    <fieldset>
-      <div class="span5 no_margin_left">
-        <div class="control-group">
-          <label for="name" class="control-label">Your Store Name</label>
-          <div class="controls ">
-            {{Form::input('text', 'name')}}
-          </div>
+  <div class="col-lg-12 well">
+    <div class="row">
+    {{ Form::open(array('url' => 'register', 'files' => true, 'role'=>'form')) }}
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="name">Your Store Name</label>
+          {{Form::input('text', 'name',NULL,array('class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="description" class="control-label">Short Description</label>
-          <div class="controls">
-            {{Form::textarea('description', NULL,array('rows'=>2))}}
-          </div>
+        <div class="form-group">
+          <label for="description">Short Description</label>
+            {{Form::textarea('description', NULL, array('rows'=>2, 'class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="address" class="control-label">Street Address</label>
-          <div class="controls ">
-            {{Form::textarea('address','',array('rows'=>3))}}
-          </div>
+        <div class="form-group">
+          <label for="address" class="form-label">Street Address</label>
+            {{Form::textarea('address','',array('rows'=>3,'class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="city" class="control-label">City</label>
-          <div class="controls ">
-            {{Form::input('text', 'city')}}
-          </div>
+        <div class="form-group">
+          <label for="city" class="form-label">City</label>
+            {{Form::input('text', 'city',NULL,array('class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="state" class="control-label">State</label>
-          <div class="controls ">
-            {{ Form::select('state',State::statelist()) }}
-          </div>
+        <div class="form-group">
+          <label for="state" class="form-label">State</label>
+            {{ Form::select('state',State::statelist(),NULL,array('class'=>'form-control')) }}
         </div>
       </div>
 
 
-      <div class="span5 no_margin_left">
-        <div class="control-group">
-          <label for="email" class="control-label">Email Address</label>
-          <div class="controls">
-            {{Form::input('email', 'email')}}
-          </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+            {{Form::input('email', 'email',NULL,array('class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="password" class="control-label">Password</label>
-          <div class="controls ">
-            {{Form::input('password', 'password')}}
-          </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+            {{Form::input('password', 'password',NULL,array('class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="password_confirmation" class="control-label">Re-enter Password</label>
-          <div class="controls ">
-            {{Form::input('password', 'password_confirmation')}}
-          </div>
+        <div class="form-group">
+          <label for="password_confirmation" class="form-label">Re-enter Password</label>
+            {{Form::input('password', 'password_confirmation',NULL,array('class'=>'form-control'))}}
         </div>
-        <div class="control-group">
-          <label for="image" class="control-label">Image or Logo</label>
-          <div class="controls ">
-            {{Form::input('file', 'image')}}
-          </div>
+        <div class="form-group">
+          <label for="image" class="form-label">Image or Logo</label>
+            {{Form::input('file', 'image',NULL)}}
         </div>
-        <div class="control-group">
-          <div class="controls ">
-            {{ Form::submit('Submit', array('class' => 'btn btn-primary btn-large')) }}
-          </div>
+        <div class="form-group">
+            {{ Form::submit('Submit', array('class' => 'pull-right btn btn-primary btn-large')) }}
         </div>
       </div>
-    </fieldset>
-  {{ Form::close() }}
+    {{ Form::close() }}
+
+
+  </div>
+</div>
 @stop
 
 

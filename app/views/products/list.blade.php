@@ -4,51 +4,39 @@
 Products
 @stop
 
-@section('sidebar')
-<div class="breadcrumb">
-	Categories 
-</div>
-<div class="product_list">
-	<ul class="nav">
-		@foreach(Category::with('products')->get() as $category)
-		<li><a href="{{action('ProductsController@showCategory', $category->id)}}">{{$category->name}} ({{$category->products->count()}})</a></li>
-		<hr>
-		@endforeach
-	</ul>
-</div>
-@stop
-
 @section('breadcrumb')
 	<ul class="breadcrumb">
-		<li><a href="/">Home</a> <span class="divider">/</span></li>
+		<li><a href="/">Home</a></li>
 		<li><a href="{{action('ProductsController@showCategory', $products[0]->category->id)}}">{{$products[0]->category->name}}</a></li>
 	</ul>
 @stop
 
 @section('main')
-<div class="row">
-	<div class="span2"><!-- start categories -->
-		@yield('sidebar') 
+<div class="col-md-12">
+	<div class="row">
+		@yield('breadcrumb') 
 	</div>
-	<div class="span10"><!-- start categories -->
-			@yield('breadcrumb') 
+	<div class="row">
 		<div align="center">
 			{{$products->links()}}
 		</div>
-		<ul class="thumbnails">
-			@foreach($products as $product)
-				<li class="span2">
-					<a href="{{action('ProductsController@showProduct',$product->id)}}">
-					<div class="thumbnail">
-					<img alt="" src="{{asset(Config::get('ballr.thumbs').$product->image1)}}">
-						<div class="caption">
-							<h5>{{$product->name}}</h5>
-						</div>
-					</div>
-				</a>
-				</li>
-			@endforeach
-		</ul>
+	</div>
+	<div class="row">
+		@foreach($products as $product)
+		<div class="col-sm-4 col-md-3">
+		  	<a href="{{action('ProductsController@showProduct', $product->id)}}">
+				<div class="thumbnail">
+				    <img src="{{Ballr::getThumb($product->image1)}}" alt="...">
+				    <div class="caption">
+				      <h4>{{$product->name}}</h4>
+				      <p>{{$product->description}}</p>
+				    </div>
+				</div>
+			</a>
+		</div>
+		@endforeach
+	</div>
+	<div class="row">
 		<div align="center">
 			{{$products->links()}}
 		</div>
