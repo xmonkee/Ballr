@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/css/bootstrap.united.min.css">
         <style>
             body {
-                padding-top: 60px;
+                padding-top: 100px;
                 padding-bottom: 40px;
             }
         </style>

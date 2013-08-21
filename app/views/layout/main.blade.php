@@ -12,7 +12,6 @@
 	<![endif]-->
 
 	<div class="container">
-
 		<div class="col-lg-12">
 			<div class="row">
 				@include('layout/nav')

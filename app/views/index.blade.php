@@ -1,5 +1,9 @@
 @extends('layout.main')
 
+@section('title')
+Your store in the cloud
+@stop
+
 @section('main')
 
 <div class="breadcrumb">

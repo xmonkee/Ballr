@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -27,23 +27,23 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Product or Shop name">
       </div>
-      <button type="submit" class="btn btn-default">Search</button>
+      <button type="submit" class="btn btn-primary">Search</button>
     </form>
-              <ul class="nav navbar-nav navbar-right">
-              	@if(Auth::check())
-                <li class="dropdown">
-    				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b class="caret"></b></a>
-    				<ul class="dropdown-menu">
-    					<li><a href="{{action('VendorsController@getEdit')}}">Settings</a></li>
-    					<li><a href="{{'/manage'}}">Mange your products</a></li>
-    					<li><a href="{{'/logout'}}">Logout</a></li>
-                  </ul>
-              	</li>
-                @else
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-                @endif
-              </ul>
+    <ul class="nav navbar-nav navbar-right">
+    	@if(Auth::check())
+      <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b class="caret"></b></a>
+  <ul class="dropdown-menu">
+  	<li><a href="{{action('VendorsController@getEdit')}}">Settings</a></li>
+  	<li><a href="{{'/manage'}}">Mange your products</a></li>
+  	<li><a href="{{'/logout'}}">Logout</a></li>
+        </ul>
+    	</li>
+      @else
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+      @endif
+    </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
 
