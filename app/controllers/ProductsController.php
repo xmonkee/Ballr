@@ -9,12 +9,19 @@ class ProductsController extends BaseController {
      */
     public function getIndex()
     {
-        $products = Product::orderBy('updated_at','desc')
-                           ->paginate(Config::get('ballr.pages'));
-
-        return View::make('products.list')
+        $productmodel = Product::orderBy('updated_at','desc'); // take latest 100 products
+        $groups=array();
+        while( $productmodel->count() > 0 and count($groups) <= 5) //keep looping till we have seen at least 100 products or displayed 5 categories
+        {
+            $category = $productmodel->first()->category;
+            $products = $category->products()->orderBy('updated_at', 'desc');
+            $productmodel = $productmodel->where('category_id','!=',$category->id);
+            $groups[] = array('category'=>$category, 'products'=>$products->take(5)->get());
+        }
+        
+        return View::make('products.index')
                            ->with(array(
-                            'products'=> $products
+                            'groups'=> $groups
                             ));
     }
 
@@ -34,9 +41,10 @@ class ProductsController extends BaseController {
                             ->products()
                             ->orderBy('updated_at','desc')
                             ->paginate(Config::get('ballr.pages'));
-        return View::make('products.list')
+        return View::make('products.category')
                    ->with(array(
-                    'products'=>$products
+                    'products'=>$products,
+                    'category'=>Category::find($id)
                     ));
     }
 

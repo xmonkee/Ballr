@@ -5,20 +5,17 @@
    ========================================================================== */
 
 .product-list {
-  padding-left: 0;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin: auto;
   list-style: none;
   overflow: hidden;
 }
 .product-list li {
   float: left;
   width: 170px;
-  height: 240px;
-  padding: 0px;
+  height: 220px;
   margin: 25px;
   font-size: 14px;
-  border: 0px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 0px;
   box-shadow: 4px 4px 9px 0px #d6d6d6;
 }
@@ -27,7 +24,7 @@
 }
 .product-list li p{
   padding-left: 5px;
-  padding-top: 5px;
+  padding-top: 0px;
   text-align: left;
   color: gray;
 }
@@ -37,6 +34,12 @@ border-top: 1px solid #ddd;
 border-bottom: 1px solid #ddd;
 }
 
+.navbar-form .form-control{
+  border-radius: 0px;
+}
+.navbar-form .btn{
+  border-radius: 0px;
+}
 
 
 

@@ -1,7 +1,7 @@
 @extends('layout/main') 
 
 @section('title')
-Products
+$category->name
 @stop
 
 @section('breadcrumb')
@@ -21,21 +21,7 @@ Products
 			{{$products->links()}}
 		</div>
 	</div>
-	<div class="row">
-		<div align="center">
-		<ul class="product-list">
-		@foreach($products as $product)
-		<li>
-		  	<a href="{{action('ProductsController@showProduct', $product->id)}}">
-			    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
-			</a>
-	      <p>{{$product->name}}</p>
-	      <p><em><b>&#8377 {{$product->price}}</b></em></p>
-		</li>
-		@endforeach
-		</ul>
-	</div>
-	</div>
+	@include('products.prodlist')
 	<div class="row">
 		<div align="center">
 			{{$products->links()}}

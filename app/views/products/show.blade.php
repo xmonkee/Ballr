@@ -1,14 +1,14 @@
 @extends('layout.main')
 
 @section('title')
-{{$product->name}}
+{{e($product->name)}}
 @stop
 
 @section('breadcrumb')
 <ul class="breadcrumb">
 	<li><a href="/">Home</a> </li>
-	<li><a href="{{action('ProductsController@showCategory', $product->category->id)}}">{{$product->category->name}}</a></li>
-	<li class="active"><a href="#">{{$product->name}}</a></li>
+	<li><a href="{{action('ProductsController@showCategory', $product->category->id)}}">{{e($product->category->name)}}</a></li>
+	<li class="active"><a href="#">{{Ballr::trunc($product->name)}}</a></li>
 </ul>
 @stop
 
@@ -26,13 +26,13 @@
 			</a>
 			<div class="row">
 				@foreach(array('image1','image2','image3') as $imagekey)
+				<ul class="product-list">
 				@if($product->$imagekey)	
-					<div class="col-md-4"> <!-- thumbnails -->
-						<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail image-loader">
+						<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="image-loader">
 							<img src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
 						</a>
-					</div>
 				@endif
+				</ul>
 				@endforeach
 			</div>
 		</div>

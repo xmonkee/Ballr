@@ -11,5 +11,5 @@ return array(
 	'thumbh'=>128,
 	'thumbw'=>128,
 	// Number of items in pagination
-	'pages'=>15,
+	'pages'=>10,
 	);
