@@ -22,19 +22,19 @@ Products
 		</div>
 	</div>
 	<div class="row">
+		<div align="center">
+		<ul class="product-list">
 		@foreach($products as $product)
-		<div class="col-sm-4 col-md-3">
+		<li>
 		  	<a href="{{action('ProductsController@showProduct', $product->id)}}">
-				<div class="thumbnail">
-				    <img src="{{Ballr::getThumb($product->image1)}}" alt="...">
-				    <div class="caption">
-				      <h4>{{$product->name}}</h4>
-				      <p>{{$product->description}}</p>
-				    </div>
-				</div>
+			    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
 			</a>
-		</div>
+	      <p>{{$product->name}}</p>
+	      <p><em><b>&#8377 {{$product->price}}</b></em></p>
+		</li>
 		@endforeach
+		</ul>
+	</div>
 	</div>
 	<div class="row">
 		<div align="center">

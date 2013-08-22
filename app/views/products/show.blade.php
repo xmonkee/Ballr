@@ -20,21 +20,23 @@
 	<div class="row"> <!-- Title -->
 		<h1>@yield('title')</h1>
 		<hr>
-		<div class="col-md-5"> <!-- Main Image -->
-			<a id="main-image" href="{{asset(Ballr::getImage($product->image1))}}">
+		<div class="col-md-6 product-list"> <!-- Main Image -->
+			<a id="main-image" class="thumbnail" href="{{asset(Ballr::getImage($product->image1))}}">
 				<img class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
 			</a>
+			<div class="row">
+				@foreach(array('image1','image2','image3') as $imagekey)
+				@if($product->$imagekey)	
+					<div class="col-md-4"> <!-- thumbnails -->
+						<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail image-loader">
+							<img src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
+						</a>
+					</div>
+				@endif
+				@endforeach
+			</div>
 		</div>
 
-		<div class="col-md-2"> <!-- thumbnails -->
-			@foreach(array('image1','image2','image3') as $imagekey)
-			@if($product->$imagekey)	
-				<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="thumbnail image-loader">
-					<img src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
-				</a>
-			@endif
-			@endforeach
-		</div>
 
 		<div class="col-md-5"> <!-- Description -->
 			
