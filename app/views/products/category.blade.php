@@ -7,7 +7,7 @@ $category->name
 @section('breadcrumb')
 	<ul class="breadcrumb">
 		<li><a href="/">Home</a></li>
-		<li><a href="{{action('ProductsController@showCategory', $products[0]->category->id)}}">{{$products[0]->category->name}}</a></li>
+		<li><a href="{{action('ProductsController@showCategory', $categoryname)}}">{{$categoryname}}</a></li>
 	</ul>
 @stop
 

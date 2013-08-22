@@ -17,11 +17,11 @@ Products
 		@yield('breadcrumb') 
 	</div>
 	@foreach($groups as $group)
-	<a href="{{action('ProductsController@showCategory', $group['category']->id)}}"><h3>{{$group['category']->name}}</h3></a>
+	<a href="{{action('ProductsController@showCategory', $group['category']->name)}}"><h3>{{$group['category']->name}}</h3></a>
 	<hr>
 	<?php $products=$group['products'] ?>
 	@include('products.prodlist')
-	<a href="{{action('ProductsController@showCategory', $group['category']->id)}}"><h4 class="pull-right">...more</h4></a>
-	@endforeach
+	<a href="{{action('ProductsController@showCategory', $group['category']->name)}}"><h4 class="pull-right">...more</h4></a> 
+ 	@endforeach
 </div>
 @stop

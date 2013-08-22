@@ -35,16 +35,18 @@ class ProductsController extends BaseController {
                     ));
     }
 
-    public function showCategory($id)
+    public function showCategory($name)
     {
-        $products = Category::find($id)
-                            ->products()
-                            ->orderBy('updated_at','desc')
-                            ->paginate(Config::get('ballr.pages'));
+        $category = Category::where('name', $name)
+                            ->first();
+        $products = $category 
+                    ->products()
+                    ->orderBy('updated_at','desc')
+                    ->paginate(Config::get('ballr.pages'));
         return View::make('products.category')
                    ->with(array(
                     'products'=>$products,
-                    'category'=>Category::find($id)
+                    'categoryname'=>$category->name,
                     ));
     }
 

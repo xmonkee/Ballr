@@ -12,7 +12,7 @@
 
 Route::controller('vendors', 'VendorsController');
 
-Route::get('categories/{id}', 'ProductsController@showCategory');
+Route::get('categories/{slug}', 'ProductsController@showCategory');
 
 Route::get('products','ProductsController@getIndex') ;
 
