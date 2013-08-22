@@ -26,4 +26,13 @@ Class Ballr{
 	{
 		return Config::get('ballr.thumbs').$imagename;
 	}
+	public static function trunc($string, $length = 20)
+	{
+		if ($length >= strlen($string)) return e($string);
+		else return e(substr($string, 0, $length-3).'...');
+	}
+	public static function curr($value)
+	{
+		return '&#8377 '.number_format($value, 2);
+	}
 }

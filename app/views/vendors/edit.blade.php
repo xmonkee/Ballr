@@ -6,62 +6,59 @@ Edit your Account
 
 @section('main')
 
-@if ($errors->any())
-       <span class='alert-error'> {{ implode('', $errors->all()) }} </span>
-       <br>
-@endif
+  <div class="breadcrumb">
+    Edit your account
+  </div>
+  @if ($errors->any())
+    <ul>
+      {{ implode('', $errors->all('<li class="text-danger">:message</li>')) }}
+    </ul>
+  @endif
 
+  <div class="col-lg-12 well">
+    <div class="row">
 {{Form::model($vendor, array(
             'url' => array('vendors/edit'),
             'files' => 'true',  
-            'class' => 'form-horizontal well'))}}
-   <fieldset>
-   <div class="span5 no_margin_left">
-       <div class="breadcrumb">{{$vendor->email}}</div>
-
-        <div class="control-group">
-            <label for="name" class="control-label">Name</label>
-            <div class="controls">
-              {{Form::input('text', 'name')}}
-            </div>
+            'role' => 'form'))}}
+   <div class="col-lg-6">
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+              {{Form::input('text', 'name',NULL, array('class'=>'form-control'))}}
        </div>
-        <div class="control-group">
-            <label for="description" class="control-label">Description</label>
-            <div class="controls">
-              {{Form::textarea('description',NULL,array('rows'=>3))}}
-            </div>
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+              {{Form::textarea('description',NULL,array('rows'=>3,'class'=>'form-control'))}}
        </div>
-        <div class="control-group">
-            <label for="address" class="control-label">Street Address</label>
-            <div class="controls">
-              {{Form::textarea('address',NULL,array('rows'=>3))}}
-            </div>
+        <div class="form-group">
+            <label for="address" class="form-label">Street Address</label>
+              {{Form::textarea('address',NULL,array('rows'=>3,'class'=>'form-control'))}}
        </div>
-        <div class="control-group">
-            <label for="city" class="control-label">City</label>
-            <div class="controls">
-              {{Form::input('text', 'city')}}
-            </div>
+        <div class="form-group">
+            <label for="city" class="form-label">City</label>
+              {{Form::input('text', 'city',NULL, array('class'=>'form-control'))}}
        </div>
-        <div class="control-group">
-            <label for="state" class="control-label">State</label>
-            <div class="controls">
-            {{ Form::select('state',State::statelist())}}
-            </div>
+        <div class="form-group">
+            <label for="state" class="form-label">State</label>
+            {{ Form::select('state',State::statelist(),NULL, array('class'=>'form-control'))}}
         </div>
    </div>
 
-   <div class="span5 no_margin_right">
-       <div class="breadcrumb">Image</div>
-            <img src = "{{asset(Config::get('ballr.thumbs').Auth::user()->image)}}" \><br \>
+   <div class="col-lg-6">
+        <div class="form-group">
+          <label for="image" class="form-label">
+            Logo
+            <img class="img-responsive" src = "{{asset(Config::get('ballr.thumbs').Auth::user()->image)}}" \><br \>
             <small> Choose a new image to change logo </small><br />
-             {{ Form::file('image') }}
-        <div class="control-group">
+          </label>
+             {{ Form::file('image',NULL, array('class'=>'form-control')) }}
+        </div>
             {{ Form::submit('Update', array('class' => 'btn btn-primary btn-large')) }}
             {{ link_to('vendors', 'Cancel', array( 'class' => 'btn btn-info btn-large')) }}
-        </div>
     </div>
 {{ Form::close() }}
 
+  </div>
+</div>
 
 @stop
