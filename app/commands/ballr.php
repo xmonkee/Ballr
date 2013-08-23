@@ -35,4 +35,8 @@ Class Ballr{
 	{
 		return '&#8377 '.number_format($value, 2);
 	}
+	public static function hash($value)
+	{
+		return substr(hash_hmac ( 'md2' , $value , '2244' ), 0, 5);
+	}
 }

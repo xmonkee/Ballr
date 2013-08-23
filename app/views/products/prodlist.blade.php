@@ -2,7 +2,7 @@
 	<ul class="product-list">
 	@foreach($products as $product)
 	<li>
-	  	<a href="{{action('ProductsController@showProduct', $product->id)}}">
+	  	<a href="{{action('ProductsController@showProduct', array($product->id, Ballr::hash($product->id), $product->name))}}">
 		    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
 		</a>
       <p>{{Ballr::trunc($product->name)}}</p>

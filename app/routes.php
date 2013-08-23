@@ -12,11 +12,11 @@
 
 Route::controller('vendors', 'VendorsController');
 
-Route::get('categories/{slug}', 'ProductsController@showCategory');
+Route::get('categories/{name}', 'ProductsController@showCategory');
 
 Route::get('products','ProductsController@getIndex') ;
 
-Route::get('products/{id}', 'ProductsController@showProduct');
+Route::get('products/{id}/{hash}/{name?}', 'ProductsController@showProduct');
 
 Route::controller('/', 'HomeController');
 

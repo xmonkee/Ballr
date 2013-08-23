@@ -12,4 +12,6 @@ return array(
 	'thumbw'=>128,
 	// Number of items in pagination
 	'pages'=>10,
+	// Number to add to product id in url 
+	'idpad'=>2342,
 	);

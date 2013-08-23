@@ -25,8 +25,9 @@ class ProductsController extends BaseController {
                             ));
     }
 
-    public function showProduct($id)
+    public function showProduct($id, $hash, $name='')
     {
+        if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
         $product = Product::find($id);
         return View::make('products.show')
                    ->with(array(

@@ -13,11 +13,11 @@
   float: left;
   width: 170px;
   height: 220px;
-  margin: 25px;
+  margin: 15px;
   font-size: 14px;
   border: 1px solid #ddd;
-  border-radius: 0px;
-  box-shadow: 4px 4px 9px 0px #d6d6d6;
+  border-radius: 3px;
+  box-shadow: 2px 2px 9px 0px #d6d6d6;
 }
 .product-list li img{
   padding: 0px;
