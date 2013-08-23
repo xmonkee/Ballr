@@ -16,7 +16,7 @@ class ProductsController extends BaseController {
             $category = $productmodel->first()->category;
             $products = $category->products()->orderBy('updated_at', 'desc');
             $productmodel = $productmodel->where('category_id','!=',$category->id);
-            $groups[] = array('category'=>$category, 'products'=>$products->take(5)->get());
+            $groups[] = array('category'=>$category, 'products'=>$products->take(6)->get());
         }
         
         return View::make('products.index')

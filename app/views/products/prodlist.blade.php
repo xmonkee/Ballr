@@ -1,5 +1,5 @@
 <div class="row">
-	<ul class="product-list">
+	<ul class="product-list list-inline">
 	@foreach($products as $product)
 	<li>
 	  	<a href="{{action('ProductsController@showProduct', array($product->id, Ballr::hash($product->id), $product->name))}}">
