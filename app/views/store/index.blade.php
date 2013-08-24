@@ -7,7 +7,7 @@ Products
 @section('breadcrumb')
 	<ul class="breadcrumb">
 		<li><a href="/">Home</a></li>
-		<li class="active"><a href="{{action('StoreController@getIndex',$vendorname)}}">{{$vendorname}}</a></li>
+		<li class="active">{{$vendorname}}</li>
 	</ul>
 @stop
 
@@ -18,7 +18,12 @@ Products
 		@yield('breadcrumb') 
 	</div>
 	<div class="row">
-		@include('elements.shelves')
+		@foreach($groups as $categoryname=>$products)
+		<a href="{{url('store', array($vendorname, 'category', $categoryname))}}"><h3>{{{$categoryname}}}</h3></a>
+		<hr>
+		@include('elements.prodlist')
+		<a href="{{url('store',array($vendorname,'category',$categoryname))}}"><h4 class="pull-right">...more</h4></a> 
+	 	@endforeach
 	</div>
 </div>
 @stop

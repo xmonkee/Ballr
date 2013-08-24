@@ -18,7 +18,12 @@ Home
 	</div>
 
 	<div class="row">
-		@include('elements.shelves')
+		@foreach($groups as $categoryname=>$products)
+		<a href="{{url('category', $categoryname)}}"><h3>{{{$categoryname}}}</h3></a>
+		<hr>
+		@include('elements.prodlist')
+		<a href="{{url('category', $categoryname)}}"><h4 class="pull-right">...more</h4></a> 
+	 	@endforeach
 	</div>
 </div>
 @stop

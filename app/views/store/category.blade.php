@@ -22,7 +22,9 @@ $category->name
 			{{$products->links()}}
 		</div>
 	</div>
-	@include('products.prodlist')
+	<div class="row">
+	@include('elements.prodlist')
+	</div>
 	<div class="row">
 		<div align="center">
 			{{$products->links()}}

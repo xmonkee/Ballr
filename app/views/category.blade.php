@@ -7,7 +7,7 @@ $category->name
 @section('breadcrumb')
 	<ul class="breadcrumb">
 		<li><a href="/">Home</a></li>
-		<li><a href="{{url('category', $categoryname)}}">{{$categoryname}}</a></li>
+		<li class='active'>{{$categoryname}}</li>
 	</ul>
 @stop
 
@@ -21,7 +21,9 @@ $category->name
 			{{$products->links()}}
 		</div>
 	</div>
+	<div class="row">
 	@include('elements.prodlist')
+	</div>
 	<div class="row">
 		<div align="center">
 			{{$products->links()}}
