@@ -10,13 +10,21 @@
 | and give it the Closure to execute when that URI is requested.
 */
 
+// Route::get('test', function(){
+// 	$products = Product::all();
+// 	echo "<!DOCTYPE html>";
+// 	echo "<html> <pre>";
+// 	foreach($products as $product)
+// 	{
+// 	}
+// 	echo "</pre> </html>";
+// });
+
 Route::controller('vendors', 'VendorsController');
 
-Route::get('categories/{name}', 'ProductsController@showCategory');
-
-Route::get('products','ProductsController@getIndex') ;
-
-Route::get('products/{id}/{hash}/{name?}', 'ProductsController@showProduct');
+Route::group(array('prefix'=>'store'), function(){
+	Route::controller('{vendorname}', 'StoreController');
+});
 
 Route::controller('/', 'HomeController');
 

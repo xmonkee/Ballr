@@ -8,9 +8,6 @@ Login to manage your products
   <div class="breadcrumb">
     Login to your store 
   </div>
-@if(Session::has('message'))
-    <p class="text-danger">{{Session::get('message')}}</p>
-@endif
 	<div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-4 col-md-offset-4 col-sm-offset-3">
 	{{Form::open(array('url'=>'login', 'class'=>'well'))}}
 	<div class="form-group">

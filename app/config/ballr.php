@@ -12,4 +12,6 @@ return array(
 	'thumbw'=>128,
 	// Number of items in pagination
 	'pages'=>10,
+	// Number of items in row in vendor in product index pages
+	'rowSize' => 6,
 	);

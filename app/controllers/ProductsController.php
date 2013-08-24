@@ -7,23 +7,6 @@ class ProductsController extends BaseController {
      *
      * @return Response
      */
-    public function getIndex()
-    {
-        $productmodel = Product::orderBy('updated_at','desc'); // take latest 100 products
-        $groups=array();
-        while( $productmodel->count() > 0 and count($groups) <= 5) //keep looping till we have seen at least 100 products or displayed 5 categories
-        {
-            $category = $productmodel->first()->category;
-            $products = $category->products()->orderBy('updated_at', 'desc');
-            $productmodel = $productmodel->where('category_id','!=',$category->id);
-            $groups[] = array('category'=>$category, 'products'=>$products->take(6)->get());
-        }
-        
-        return View::make('products.index')
-                           ->with(array(
-                            'groups'=> $groups
-                            ));
-    }
 
     public function showProduct($id, $hash, $name='')
     {

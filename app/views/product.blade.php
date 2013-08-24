@@ -7,8 +7,8 @@
 @section('breadcrumb')
 <ul class="breadcrumb">
 	<li><a href="/">Home</a> </li>
-	<li><a href="{{action('ProductsController@showCategory', $product->category->name)}}">{{{$product->category->name}}}</a></li>
-	<li class="active"><a href="#">{{Ballr::trunc($product->name)}}</a></li>
+	<li><a href="{{url('category', $categoryname)}}">{{{$categoryname}}}</a></li>
+	<li class="active">{{Ballr::trunc($product->name)}}</li>
 </ul>
 @stop
 

@@ -8,16 +8,13 @@
   list-style: none;
 }
 .product-list li {
-  width: 170px;
-  height: 220px;
+  width: 165px;
   margin: 0 15px 15px 0;
   padding: 0px;
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 3px;
   box-shadow: 2px 2px 9px 0px #d6d6d6;
-}
-.product-list li img{
 }
 
 .product-list li p{

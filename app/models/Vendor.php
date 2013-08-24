@@ -75,4 +75,9 @@ class Vendor extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function products()
+	{
+		return $this->hasMany('Product');
+	}
+
 }

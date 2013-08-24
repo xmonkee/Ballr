@@ -9,20 +9,16 @@
     <span class="alert-error">{{Session::get('message')}}</span>
 	<br>
 @endif
-<div class="span3">
+<div class="col-md-6">
 <img src = "{{Ballr::getThumb(Auth::user()->image)}}" \><br \>
 </div>
-<h3>
 
-{{link_to('/', 'Site Home')}} 
-<br>
-{{link_to('vendors/edit', 'Edit your profile')}}
-<br>
-{{link_to('manage', 'manage products')}}
-<br>
-<br>
-{{link_to('logout', 'Logout')}} 
-<br>
+<div class="col-md-6">
 
-</h3>
+<h3>{{link_to('/', 'Site Home')}} </h3>
+<h3>{{link_to('vendors/edit', 'Edit your profile')}}</h3>
+<h3>{{link_to('manage', 'manage products')}}</h3>
+<h3>{{link_to('logout', 'Logout')}} </h3>
+<h3>{{link_to_action('StoreController@getIndex', 'Store Front', array($vendor->name))}}
+</div>
 @stop

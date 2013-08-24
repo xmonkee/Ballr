@@ -17,7 +17,10 @@
 	    </div>
 		@include('layout/nav')
 
-		<div class="col-lg-12">
+		<div class="col-md-12">
+
+			@include('layout.message')
+
 			<div class="row">
 				@yield('main')
 			</div>
