@@ -14,10 +14,15 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+    public function __construct(Product $productmodel)
+    {
+        $this->productmodel = $productmodel;
+
+    }
 
 	public function getIndex()
 	{
-        $groups = Product::getGroups();
+        $groups = $this->productmodel->getGroups();
 		return View::make('index')->with(array(
             'groups'=>$groups, 
             'action'=>'HomeController@getCategory', 
@@ -38,10 +43,15 @@ class HomeController extends BaseController {
 
 	public function postLogin()
     {
-        If (Auth::attempt(array('email'=>Input::get('email'),'password'=>Input::get('password')),Input::get('isRemember'))) {
+        If (Auth::attempt(array(
+            'email'=>Input::get('email'),
+            'password'=>Input::get('password')
+            ) ,Input::get('isRemember'))) 
+        {
             return Redirect::intended('vendors');
         }
-        else {
+        else 
+        {
             Session::flash('message', 'Email or Password incorrect');
             return Redirect::to('login');
         }
@@ -84,7 +94,7 @@ class HomeController extends BaseController {
     public function getProduct($id, $hash, $name='')
     {
         if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $product = Product::find($id);
+        $product = $this->productmodel->find($id);
         return View::make('product')
                    ->with(array(
                     'product'=>$product,
@@ -92,9 +102,9 @@ class HomeController extends BaseController {
                     ));
     }
 
-    public function getCategory($name)
+    public function getCategory($categoryname)
     {
-        $category = Category::where('name', $name)
+        $category = Category::where('name', $categoryname)
                             ->first();
         $products = $category 
                     ->products()
@@ -103,7 +113,7 @@ class HomeController extends BaseController {
         return View::make('category')
                    ->with(array(
                     'products'=>$products,
-                    'categoryname'=>$category->name,
+                    'categoryname'=>$categoryname,
                     ));
     }
 

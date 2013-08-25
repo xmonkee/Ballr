@@ -7,13 +7,19 @@ class StoreController extends BaseController {
      *
      * @return Response
      */
+    public function __construct(Product $productmodel, Vendor $vendor)
+    {
+           $this->vendor = $vendor;
+           $this->productmodel = $productmodel;
+
+    }
+
     public function getIndex($vendorname)
     {
-    	$vendor = Vendor::where('name', $vendorname)->first();
-    	$products = $vendor->products()
-    					   ->orderBy('updated_at','desc')
-    					   ->get(); // take latest 100 products
-    	$groups = Product::getGroups($products);
+    	$this->vendor = $this->vendor->where('name', $vendorname)->first();
+    	$this->productmodel = $this->vendor->products()
+    					   ->orderBy('updated_at','desc');
+    	$groups = $this->productmodel->getGroups();
         
         return View::make('store.index')
                            ->with(array(
@@ -22,17 +28,6 @@ class StoreController extends BaseController {
                             'action' => 'StoreController@getCategory',
                             'arguments' => array('vendorname', 'categoryname')
                             ));
-    }
-
-    public function showProduct($id, $hash, $name='')
-    {
-        if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $product = Product::find($id);
-        return View::make('products.show')
-                   ->with(array(
-                    'product'=>$product,
-                    'category'=>$product->category()
-                    ));
     }
 
     public function getCategory($vendorname, $categoryname)

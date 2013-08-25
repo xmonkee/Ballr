@@ -1,7 +1,7 @@
 @extends('layout/main') 
 
 @section('title')
-$category->name
+{{{$categoryname}}}
 @stop
 
 @section('breadcrumb')
