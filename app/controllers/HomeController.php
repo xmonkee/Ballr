@@ -20,16 +20,6 @@ class HomeController extends BaseController {
 
     }
 
-	public function getIndex()
-	{
-        $groups = $this->productmodel->getGroups();
-		return View::make('index')->with(array(
-            'groups'=>$groups, 
-            'action'=>'HomeController@getCategory', 
-            ));
-	}
-
-
 	public function getLogin()
 	{
         if(Auth::check())
@@ -89,32 +79,6 @@ class HomeController extends BaseController {
             ->withInput()
             ->withErrors($validation)
             ->with('message', 'There were validation errors.');
-    }
-
-    public function getProduct($id, $hash, $name='')
-    {
-        if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $product = $this->productmodel->find($id);
-        return View::make('product')
-                   ->with(array(
-                    'product'=>$product,
-                    'categoryname'=>$product->category->name
-                    ));
-    }
-
-    public function getCategory($categoryname)
-    {
-        $category = Category::where('name', $categoryname)
-                            ->first();
-        $products = $category 
-                    ->products()
-                    ->orderBy('updated_at','desc')
-                    ->paginate(Config::get('ballr.pages'));
-        return View::make('category')
-                   ->with(array(
-                    'products'=>$products,
-                    'categoryname'=>$categoryname,
-                    ));
     }
 
 }

@@ -1,7 +1,11 @@
 	<ul class="product-list list-inline">
 	@foreach($products as $product)
 	<li>
-	  	<a href="{{url('product', array($product->id, Ballr::hash($product->id), $product->name))}}">
+	  	<a href="{{action('StoreController@getProduct', array(
+	  	isset($product->vendor->name)? $product->vendor->name: 'all', 
+	  	$product->id, 
+	  	Ballr::hash($product->id), 
+	  	$product->name))}}">
 		    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
 		</a>
       <p>{{Ballr::trunc($product->name)}}</p>

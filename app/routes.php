@@ -26,5 +26,9 @@ Route::group(array('prefix'=>'store'), function(){
 	Route::controller('{vendorname}', 'StoreController');
 });
 
+Route::get('/', function(){
+	return Redirect::to('store/all');
+});
+
 Route::controller('/', 'HomeController');
 
