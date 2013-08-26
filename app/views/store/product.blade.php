@@ -19,28 +19,53 @@
 		@yield('breadcrumb') 
 	</div>
 	<div class="row"> <!-- Title -->
-		<h1>@yield('title')</h1>
-		<hr>
-		<div class="col-md-6"> <!-- Main Image -->
+		<div class="col-md-5"> <!-- Main Image -->
+			<div class="row">
 			 <a id="main-image"  href="{{asset(Ballr::getImage($product->image1))}}">
-				<img class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
+				<img style="width:100%;" class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
 			</a>
-		</div>
-		<div class="col-md-1 col-xs-12">
+			</div>
 			<div class="row">
 			@foreach(array('image1','image2','image3') as $imagekey)
 			@if($product->$imagekey)	
-				<div class="col-md-12 col-xs-4">
-				<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="image-loader">
-					<img class="img-responsive" src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
-				</a>
+				<div class="col-md-2 col-xs-4">
+					<div class="row">
+					<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="image-loader">
+						<img style="width:95%" src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
+					</a>
+					</div>
 				</div>
 			@endif
 			@endforeach
 			</div>
 		</div>
-		<div class="col-md-5">
-			<p class="lead"> {{{$product->description}}} </p>
+		<div class="col-md-6 col-md-offset-1">
+			<div class="row">
+					<table class="table">
+				        <thead>
+							<tr>
+								<td><h3><small><em>{{{Ballr::get('storePrefix')}}}</em></small></h3></td>
+								<td><h3>{{link_to_action('StoreController@getIndex', $vendorname, $vendorname)}}</h3></td>
+							</tr>
+							<tr class="success">
+								<td><h3><small><em>Price</em></small></h3></td>
+								<td><h3>{{{Ballr::getPrice($product->price)}}}</h3></td>
+							</tr>
+							<tr>
+								<td colspan="2">{{{$product->description}}}</td>
+							</tr>
+						</thead>
+				     	<tbody> 
+				        	@foreach($props as $propname=>$value)
+							<tr>
+								<td>{{{$propname}}}</td>
+								<td>{{{Ballr::trunc($value)}}}</td>
+							</tr>
+							@endforeach
+				        </tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>	 

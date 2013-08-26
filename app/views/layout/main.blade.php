@@ -13,7 +13,7 @@
 
 	<div class="container">
 	    <div class="page-header">
-	      <h1>{{Config::get('ballr.name')}}</h1>
+	      <h1>@yield('title')</h1>
 	    </div>
 		@include('layout/nav')
 

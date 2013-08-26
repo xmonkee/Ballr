@@ -42,4 +42,10 @@ Class Ballr{
 	{
 		return substr(hash_hmac ( 'md2' , $value , '2244' ), 0, 5);
 	}
+
+	public static function getPrice($value)
+	{
+		if(is_null($value)) return 'NA';
+		return Ballr::get('curr'). number_format($value, 2);
+	}
 }

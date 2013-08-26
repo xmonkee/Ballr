@@ -14,12 +14,23 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-    public function __construct(Product $productmodel)
+    public function __construct(ProductPresenter $productPresenter)
     {
-        $this->productmodel = $productmodel;
+        $this->productPresenter = $productPresenter;
 
     }
 
+    public function getIndex()
+    {
+        $groups = $this ->productPresenter
+                        ->getGroups();
+        
+        return View::make('index')
+                           ->with(array(
+                            'groups'=> $groups,
+                            'vendorname' => Ballr::get('allName')
+                            ));
+    }
 	public function getLogin()
 	{
         if(Auth::check())

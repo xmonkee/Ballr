@@ -1,7 +1,7 @@
 @extends('layout/main') 
 
 @section('title')
-Products
+{{{$vendorname}}}
 @stop
 
 @section('breadcrumb')

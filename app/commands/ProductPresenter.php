@@ -3,6 +3,9 @@
 class ProductPresenter{
 
 	protected $productmodel;
+    protected $product;
+    public $vendor;
+    public $category;
 
 	protected function get()
 	{
@@ -14,12 +17,14 @@ class ProductPresenter{
 		$this->productmodel = Product::orderBy('updated_at','desc');
 	}
 
+    // $this->where('category', 'Suits')
 	public function where($fieldname, $fieldvalue=null)
 	{
 		if(is_null($fieldvalue)) return $this;
-		if($fieldvalue=='all') return $this;
+		if($fieldvalue==Ballr::get('allName')) return $this;
 		$field = $fieldname::where('name',$fieldvalue)->first();
 		$this->productmodel->where($fieldname.'_id', $field->id);
+        $this->$fieldname = $field;
 		return $this;
 	}
 
@@ -37,6 +42,17 @@ class ProductPresenter{
         return $groups;
     }
 
+    public function getProps()
+    {
+        for($i=1; $i<=10; $i++)
+        {
+            $key='prop'.$i;
+            $props[$this->category->$key] = $this->product->$key;
+        }
+        return $props;
+
+    }
+
     public function paginate($items)
     {
     	return $this->productmodel->with('vendor')->paginate($items);
@@ -44,6 +60,9 @@ class ProductPresenter{
 
     public function find($id)
     {
-    	return $this->productmodel->find($id);
+    	$this->product = $this->productmodel->find($id);
+        $this->vendor = $this->product->vendor;
+        $this->category = $this->product->category;
+        return $this->product;
     }
 }

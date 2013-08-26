@@ -17,13 +17,16 @@
   box-shadow: 2px 2px 9px 0px #d6d6d6;
 }
 
-.product-list .caption{
+.product-list .caption {
   
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   padding-left: 5px;
   padding-top: 0px;
+}
+.product-list .caption p{
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
 
 .product-list li p{
@@ -31,6 +34,17 @@
   margin-bottom: 0px;
   text-align: left;
   color: gray;
+}
+
+.image-loader img{
+  padding: 0px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border: 1px solid #555;
+}
+
+.image-loader img:hover{
+  border-color: #97310e;
 }
 
 .pagination .active span{
