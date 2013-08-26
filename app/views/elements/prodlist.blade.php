@@ -8,11 +8,18 @@
 	  	$product->name))}}">
 		    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
 		</a>
-      <p>{{Ballr::trunc($product->name)}}</p>
-      @if(isset($product->vendor->name)) 
-      {{link_to_action('StoreController@getIndex',$product->vendor->name, array($product->vendor->name))}}
-      @endif
-      <p><em><b>{{Ballr::curr($product->price)}}</b></em></p>
+		<div class="caption">	
+			<p>{{{$product->name}}}</p>
+			@if(isset($product->vendor->name)) 
+			{{link_to_action('StoreController@getIndex',$product->vendor->name, array($product->vendor->name))}}
+			@endif
+			<p><em><b>
+				{{Ballr::get('curr')}}
+				@if(isset($product->price))
+				{{{number_format($product->price,2)}}}
+				@endif
+			</b></em></p>
+		</div>
 	</li>
 	@endforeach
 	</ul>

@@ -14,4 +14,6 @@ return array(
 	'pages'=>10,
 	// Number of items in row in vendor in product index pages
 	'rowSize' => 6,
+	// Currency symbol
+	'curr' => '&#8377; '
 	);

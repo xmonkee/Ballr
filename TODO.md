@@ -7,8 +7,6 @@
 		- Add properties
 	- New Landing pages
 		- Home
-		- Vendors
-		- Categories
 	- Contact seller information
 	- Sidebar Design
 
