@@ -1,7 +1,7 @@
 @extends('layout/main') 
 
 @section('title')
-Products
+{{{$vendorname}}}
 @stop
 
 @section('breadcrumb')
@@ -18,12 +18,7 @@ Products
 		@yield('breadcrumb') 
 	</div>
 	<div class="row">
-		@foreach($groups as $categoryname=>$products)
-		<a href="{{url('store', array($vendorname, 'category', $categoryname))}}"><h3>{{{$categoryname}}}</h3></a>
-		<hr>
-		@include('elements.prodlist')
-		<a href="{{url('store',array($vendorname,'category',$categoryname))}}"><h4 class="pull-right">...more</h4></a> 
-	 	@endforeach
+		@include('elements.shelves')
 	</div>
 </div>
 @stop

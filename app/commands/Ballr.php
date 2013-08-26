@@ -1,6 +1,11 @@
 <?php
 
 Class Ballr{
+	public static function get($value)
+	{
+		return Config::get('ballr.'.$value);
+	}
+
 	public static function saveImage($image)
 	{
 		if(is_null($image)) return '';
@@ -28,15 +33,19 @@ Class Ballr{
 	}
 	public static function trunc($string, $length = 20)
 	{
-		if ($length >= strlen($string)) return e($string);
-		else return e(substr($string, 0, $length-3).'...');
+		if ($length >= strlen($string)) return $string;
+		else return substr($string, 0, $length-3).'...';
 	}
-	public static function curr($value)
-	{
-		return '&#8377 '.number_format($value, 2);
-	}
+
+	//return hash of product id to make un-iterable url's for products
 	public static function hash($value)
 	{
 		return substr(hash_hmac ( 'md2' , $value , '2244' ), 0, 5);
+	}
+
+	public static function getPrice($value)
+	{
+		if(is_null($value)) return 'NA';
+		return Ballr::get('curr'). number_format($value, 2);
 	}
 }

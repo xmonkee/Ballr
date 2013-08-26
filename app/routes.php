@@ -22,9 +22,13 @@
 
 Route::controller('vendors', 'VendorsController');
 
-Route::group(array('prefix'=>'store'), function(){
+Route::group(array('prefix'=>Ballr::get('storePrefix')), function(){
 	Route::controller('{vendorname}', 'StoreController');
 });
+
+// Route::get('/', function(){
+// 	return Redirect::to('store/all');
+// });
 
 Route::controller('/', 'HomeController');
 

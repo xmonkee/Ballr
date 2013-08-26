@@ -14,17 +14,23 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+    public function __construct(ProductPresenter $productPresenter)
+    {
+        $this->productPresenter = $productPresenter;
 
-	public function getIndex()
-	{
-        $groups = Product::getGroups();
-		return View::make('index')->with(array(
-            'groups'=>$groups, 
-            'action'=>'HomeController@getCategory', 
-            ));
-	}
+    }
 
-
+    public function getIndex()
+    {
+        $groups = $this ->productPresenter
+                        ->getGroups();
+        
+        return View::make('index')
+                           ->with(array(
+                            'groups'=> $groups,
+                            'vendorname' => Ballr::get('allName')
+                            ));
+    }
 	public function getLogin()
 	{
         if(Auth::check())
@@ -38,10 +44,15 @@ class HomeController extends BaseController {
 
 	public function postLogin()
     {
-        If (Auth::attempt(array('email'=>Input::get('email'),'password'=>Input::get('password')),Input::get('isRemember'))) {
+        If (Auth::attempt(array(
+            'email'=>Input::get('email'),
+            'password'=>Input::get('password')
+            ) ,Input::get('isRemember'))) 
+        {
             return Redirect::intended('vendors');
         }
-        else {
+        else 
+        {
             Session::flash('message', 'Email or Password incorrect');
             return Redirect::to('login');
         }
@@ -79,32 +90,6 @@ class HomeController extends BaseController {
             ->withInput()
             ->withErrors($validation)
             ->with('message', 'There were validation errors.');
-    }
-
-    public function getProduct($id, $hash, $name='')
-    {
-        if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $product = Product::find($id);
-        return View::make('product')
-                   ->with(array(
-                    'product'=>$product,
-                    'categoryname'=>$product->category->name
-                    ));
-    }
-
-    public function getCategory($name)
-    {
-        $category = Category::where('name', $name)
-                            ->first();
-        $products = $category 
-                    ->products()
-                    ->orderBy('updated_at','desc')
-                    ->paginate(Config::get('ballr.pages'));
-        return View::make('category')
-                   ->with(array(
-                    'products'=>$products,
-                    'categoryname'=>$category->name,
-                    ));
     }
 
 }
