@@ -41,21 +41,22 @@
 		</div>
 		<div class="col-md-6 col-md-offset-1">
 			<div class="row">
-					<table class="table">
-				        <thead>
+					<table class="table table-condensed">
+				        <tbody>
 							<tr>
 								<td><h3><small><em>{{{Ballr::get('storePrefix')}}}</em></small></h3></td>
 								<td><h3>{{link_to_action('StoreController@getIndex', $vendorname, $vendorname)}}</h3></td>
 							</tr>
-							<tr class="success">
+							<tr>
 								<td><h3><small><em>Price</em></small></h3></td>
 								<td><h3>{{{Ballr::getPrice($product->price)}}}</h3></td>
 							</tr>
 							<tr>
-								<td colspan="2">{{{$product->description}}}</td>
+								<td><small><em>Description</em></small></td>
+								<td>
+								{{{strtoupper(substr($product->description, 0,1)).substr($product->description, 1)}}}
+								</td>
 							</tr>
-						</thead>
-				     	<tbody> 
 				        	@foreach($props as $propname=>$value)
 							<tr>
 								<td>{{{$propname}}}</td>
