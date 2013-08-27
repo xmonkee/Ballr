@@ -22,7 +22,7 @@ class ProductPresenter{
 	{
 		if(is_null($fieldvalue)) return $this;
 		if($fieldvalue==Ballr::get('allName')) return $this;
-		$field = $fieldname::where('name',$fieldvalue)->firstOrFail();
+		$field = $fieldname::where('name',$fieldvalue)->first();
 		$this->productmodel->where($fieldname.'_id', $field->id);
         $this->$fieldname = $field;
 		return $this;
@@ -44,16 +44,11 @@ class ProductPresenter{
 
     public function getProps()
     {
-        // for($i=1; $i<=10; $i++)
-        // {
-        //     $key='prop'.$i;
-        //     $key = $this->category->$key;
-        //     $value = $this->product->$key;
-        //     if($key and $value){
-        //         $props[$key] = $value;
-        //     }
-        // }
-        return null;
+        for($i=1; $i<=10; $i++)
+        {
+            $key='prop'.$i;
+            $props[$this->category->$key] = $this->product->$key;
+        }
         return $props;
 
     }
@@ -65,7 +60,7 @@ class ProductPresenter{
 
     public function find($id)
     {
-    	$this->product = $this->productmodel->findOrFail($id);
+    	$this->product = $this->productmodel->find($id);
         $this->vendor = $this->product->vendor;
         $this->category = $this->product->category;
         return $this->product;
