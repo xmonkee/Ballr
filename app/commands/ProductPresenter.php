@@ -44,15 +44,16 @@ class ProductPresenter{
 
     public function getProps()
     {
-        for($i=1; $i<=10; $i++)
-        {
-            $key='prop'.$i;
-            $key = $this->category->$key;
-            $value = $this->product->$key;
-            if($key and $value){
-                $props[$key] = $value;
-            }
-        }
+        // for($i=1; $i<=10; $i++)
+        // {
+        //     $key='prop'.$i;
+        //     $key = $this->category->$key;
+        //     $value = $this->product->$key;
+        //     if($key and $value){
+        //         $props[$key] = $value;
+        //     }
+        // }
+        return null;
         return $props;
 
     }
