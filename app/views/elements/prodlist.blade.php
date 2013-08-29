@@ -7,7 +7,7 @@
 	  	$product->id, 
 	  	Ballr::hash($product->id), 
 	  	$product->name))}}">
-		    <img class="img-responsive" src="{{Ballr::getThumb($product->image1)}}" alt="...">
+		    <img src="{{Ballr::getThumb($product->image1)}}" alt="...">
 		</a>
 		<div class="caption">	
 			{{{$product->name}}}

@@ -1,6 +1,6 @@
 
 $('.main-image-box').height(
-	Math.max(300 , $('.main-image > img').height())
+	Math.max(250 , $('.main-image > img').height())
 	);
 
 var changeImage = function(){
