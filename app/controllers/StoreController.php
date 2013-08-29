@@ -45,12 +45,14 @@ class StoreController extends BaseController {
         if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
         $product = $this->productpresenter->find($id);
         $props = $this->productpresenter->getProps();
+        $groups = $this->productpresenter->reset()->where('vendor',$vendorname)->getGroups();
         return View::make('store.product')
                    ->with(array(
                     'product'=>$product,
                     'vendorname'=>$this->productpresenter->vendor->name,
                     'categoryname'=>$this->productpresenter->category->name,
-                    'props' => $props
+                    'props' => $props,
+                    'groups' => $groups
                     ));
     }
 

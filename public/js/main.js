@@ -1,11 +1,13 @@
 
-$('.image-loader').on('click', function(e) 
-{
-	$('#main-image').attr('href', $(this).attr("href"));
-	$('#main-image > img').attr('src', $(this).attr("href"));
-	return false;
-});
+$('.main-image-box').height(
+	$('.main-image > img').height()
+	);
 
-// $('.thumbnail').css({
-//     'height': $('.thumbnail').height()
-// });
+var changeImage = function(){
+	$('.main-image').attr('href', $(this).attr("href"));
+	$('.main-image > img').attr('src', $(this).attr("href"));
+	return false;
+}
+
+$('.image-loader').hover(changeImage).click(changeImage);
+

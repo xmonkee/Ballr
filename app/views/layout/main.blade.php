@@ -13,7 +13,7 @@
 
 	<div class="container">
 	    <div class="page-header">
-	      <h1>@yield('title')</h1>
+	      <h2>@yield('title')</h2>
 	    </div>
 		@include('layout/nav')
 

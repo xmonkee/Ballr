@@ -8,7 +8,7 @@
   list-style: none;
 }
 .product-list li {
-  width: 165px;
+  width: 140px;
   margin: 0 15px 15px 0;
   padding: 0px;
   font-size: 14px;
@@ -45,6 +45,14 @@
 
 .image-loader img:hover{
   border-color: #97310e;
+}
+
+.main-image-box {
+  /*height:500px;*/
+}
+.main-image > img{
+  max-height:100%;
+  max-width:100%;
 }
 
 .pagination .active span{

@@ -7,6 +7,11 @@ class ProductPresenter{
     public $vendor;
     public $category;
 
+    public function reset()
+    {
+        $this->productmodel = Product::orderBy('updated_at','desc');
+        return $this;
+    }
 	protected function get()
 	{
 		return $this->productmodel->with('vendor','category')->get();
@@ -22,7 +27,7 @@ class ProductPresenter{
 	{
 		if(is_null($fieldvalue)) return $this;
 		if($fieldvalue==Ballr::get('allName')) return $this;
-		$field = $fieldname::where('name',$fieldvalue)->first();
+		$field = $fieldname::where('name',$fieldvalue)->firstOrFail();
 		$this->productmodel->where($fieldname.'_id', $field->id);
         $this->$fieldname = $field;
 		return $this;
@@ -44,10 +49,14 @@ class ProductPresenter{
 
     public function getProps()
     {
+        $props=array();
         for($i=1; $i<=10; $i++)
         {
-            $key='prop'.$i;
-            $props[$this->category->$key] = $this->product->$key;
+            $prop ='prop'.$i;
+            $key = $this->category->$prop;
+            $value = $this->product->$prop;
+            if($key)
+            $props[$key] = $value;
         }
         return $props;
 
@@ -60,7 +69,7 @@ class ProductPresenter{
 
     public function find($id)
     {
-    	$this->product = $this->productmodel->find($id);
+    	$this->product = $this->productmodel->findOrFail($id);
         $this->vendor = $this->product->vendor;
         $this->category = $this->product->category;
         return $this->product;

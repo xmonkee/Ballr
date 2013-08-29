@@ -18,41 +18,45 @@
 	<div class="row">
 		@yield('breadcrumb') 
 	</div>
-	<div class="row"> <!-- Title -->
+	<div class="row"> <!--Product Section -->
 		<div class="col-md-5"> <!-- Main Image -->
 			<div class="row">
-			 <a id="main-image"  href="{{asset(Ballr::getImage($product->image1))}}">
-				<img style="width:100%;" class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
-			</a>
-			</div>
-			<div class="row">
-			@foreach(array('image1','image2','image3') as $imagekey)
-			@if($product->$imagekey)	
-				<div class="col-md-2 col-xs-4">
-					<div class="row">
-					<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="image-loader">
-						<img style="width:95%" src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
+				<div class="main-image-box">
+					 <a class="main-image" href="{{asset(Ballr::getImage($product->image1))}}">
+						<img class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
 					</a>
-					</div>
 				</div>
-			@endif
-			@endforeach
 			</div>
 		</div>
-		<div class="col-md-6 col-md-offset-1">
+		<div class="col-md-6 col-md-offset-1"> <!-- Thumbnails and description -->
 			<div class="row">
 				<p><strong>{{link_to_action('StoreController@getIndex', $vendorname, $vendorname)}}</strong></p>
 				<p><strong>Price: {{{Ballr::getPrice($product->price)}}}</strong></p>	
 				<hr />	
-				<ul>
-					<li> {{implode('</li><li>', explode('.', e($product->description)))}}</li>
-				</ul>
+				@foreach(array('image1','image2','image3') as $imagekey)
+				@if($product->$imagekey)	
+					<div class="col-md-2 col-xs-4">
+						<div class="row">
+						<a href="{{asset(Ballr::getImage($product->$imagekey))}}" class="image-loader">
+							<img style="width:95%" src="{{Ballr::getThumb($product->$imagekey)}}" alt="">
+						</a>
+						</div>
+					</div>
+				@endif
+				@endforeach
+			</div>
+			<div class="row">
+				<hr>
+				<p> {{{$product->description}}}</p>
 	        	@foreach($props as $propname=>$value)
 					<p><strong>{{{$propname}}}:</strong>{{{Ballr::trunc($value)}}}</p>
 				@endforeach
-				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row" style="padding-top:50px"> <!-- Other products -->
+	      <h3>More Products</h3>
+		@include('elements.shelves')
 	</div>
 </div>	 
 @stop
