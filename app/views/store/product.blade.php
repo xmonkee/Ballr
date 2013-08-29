@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="main-image-box">
 					 <a class="main-image" href="{{asset(Ballr::getImage($product->image1))}}">
-						<img class="img-responsive" src="{{asset(Ballr::getImage($product->image1))}}" />
+						<img  src="{{asset(Ballr::getImage($product->image1))}}" />
 					</a>
 				</div>
 			</div>
