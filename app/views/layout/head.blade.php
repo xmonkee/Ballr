@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="/css/foundation.min.css">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.united.min.css">
         <style>
             body {
                 padding-top: 50px;

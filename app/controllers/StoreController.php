@@ -7,14 +7,14 @@ class StoreController extends BaseController {
      *
      * @return Response
      */
-    public function __construct(ProductPresenter $productpresenter)
+    public function __construct(ProductPresenter $productPresenter)
     {
-           $this->productpresenter = $productpresenter;
+           $this->productPresenter = $productPresenter;
     }
 
     public function getIndex($vendorname)
     {
-        $groups = $this ->productpresenter
+        $groups = $this ->productPresenter
                         ->where('Vendor', $vendorname)
                         ->getGroups();
         
@@ -22,12 +22,13 @@ class StoreController extends BaseController {
                            ->with(array(
                             'groups'=> $groups,
                             'vendorname'=> $vendorname,
+                            'vendor' => $this->productPresenter->where('vendor', $vendorname)->vendor,
                             ));
     }
 
     public function getCategory($vendorname, $categoryname)
     {
-        $products = $this   ->productpresenter
+        $products = $this   ->productPresenter
                             ->where('Vendor', $vendorname)
                             ->where('Category', $categoryname)
                             ->paginate(Config::get('ballr.pages'));
@@ -43,14 +44,14 @@ class StoreController extends BaseController {
     public function getProduct($vendorname, $id, $hash, $name='')
     {
         if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $product = $this->productpresenter->find($id);
-        $props = $this->productpresenter->getProps();
-        $groups = $this->productpresenter->reset()->where('vendor',$vendorname)->getGroups();
+        $product = $this->productPresenter->find($id);
+        $props = $this->productPresenter->getProps();
+        $groups = $this->productPresenter->reset()->where('vendor',$vendorname)->getGroups();
         return View::make('store.product')
                    ->with(array(
                     'product'=>$product,
-                    'vendorname'=>$this->productpresenter->vendor->name,
-                    'categoryname'=>$this->productpresenter->category->name,
+                    'vendorname'=>$this->productPresenter->vendor->name,
+                    'categoryname'=>$this->productPresenter->category->name,
                     'props' => $props,
                     'groups' => $groups
                     ));
