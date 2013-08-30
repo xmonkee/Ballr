@@ -2,6 +2,7 @@
 
 class StoreController extends BaseController {
 
+    var $productPresenter; 
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +45,9 @@ class StoreController extends BaseController {
     public function getProduct($vendorname, $id, $hash, $name='')
     {
         if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
+        $groups = $this->productPresenter->where('Vendor',$vendorname)->getGroups();
         $product = $this->productPresenter->find($id);
         $props = $this->productPresenter->getProps();
-        $groups = $this->productPresenter->reset()->where('vendor',$vendorname)->getGroups();
         return View::make('store.product')
                    ->with(array(
                     'product'=>$product,
