@@ -3,7 +3,7 @@
 class Product extends Eloquent {
     protected $guarded = array('id');
     public static $rules = array(
-        'name' => 'required|min:5',
+        'name' => 'required|min:5|max:30',
         'image1' => 'required',
     );
 

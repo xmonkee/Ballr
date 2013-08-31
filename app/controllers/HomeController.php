@@ -31,6 +31,7 @@ class HomeController extends BaseController {
                             'vendorname' => Ballr::get('allName')
                             ));
     }
+
 	public function getLogin()
 	{
         if(Auth::check())
@@ -71,7 +72,8 @@ class HomeController extends BaseController {
             Session::flash('message','You are already logged in');
             return Redirect::to('/');
         }
-    	return View::make('register');
+        $states = DB::table('states')->orderBy('state')->lists('state', 'id');
+    	return View::make('register')->with(compact('states'));
     }
 
     public function postRegister()

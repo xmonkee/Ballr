@@ -37,7 +37,7 @@ Create an Account
         </div>
         <div class="form-group">
           <label for="state" class="form-label">State</label>
-            {{ Form::select('state',State::statelist(),NULL,array('class'=>'form-control')) }}
+            {{ Form::select('state',$states,NULL,array('class'=>'form-control')) }}
         </div>
       </div>
 

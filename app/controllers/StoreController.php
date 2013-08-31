@@ -16,46 +16,46 @@ class StoreController extends BaseController {
     public function getIndex($vendorname)
     {
         $groups = $this ->productPresenter
-                        ->where('Vendor', $vendorname)
+                        ->whereVendor($vendorname)
                         ->getGroups();
-        
-        return View::make('store.index')
-                           ->with(array(
-                            'groups'=> $groups,
-                            'vendorname'=> $vendorname,
-                            'vendor' => $this->productPresenter->where('vendor', $vendorname)->vendor,
+        $vendor = $this->productPresenter->vendor;
+        return View::make('store.index')->with(compact(
+                            'groups',
+                            'vendorname',
+                            'vendor'
                             ));
     }
 
     public function getCategory($vendorname, $categoryname)
     {
         $products = $this   ->productPresenter
-                            ->where('Vendor', $vendorname)
-                            ->where('Category', $categoryname)
+                            ->whereVendor($vendorname)
+                            ->whereCategory($categoryname)
                             ->paginate(Config::get('ballr.pages'));
 
         return View::make('store.category')
-                   ->with(array(
-                    'products'=>$products,
-                    'categoryname'=>$categoryname,
-                    'vendorname'=>$vendorname
+                   ->with(compact(
+                    'products',
+                    'categoryname',
+                    'vendorname'
                     ));
     }
 
     public function getProduct($vendorname, $id, $hash, $name='')
     {
         if($hash != Ballr::hash($id)) App::abort(401, 'You are not Authorized');
-        $groups = $this->productPresenter->where('Vendor',$vendorname)->getGroups();
+        $groups = $this->productPresenter->whereVendor($vendorname)->getGroups();
         $product = $this->productPresenter->find($id);
         $props = $this->productPresenter->getProps();
-        return View::make('store.product')
-                   ->with(array(
-                    'product'=>$product,
-                    'vendorname'=>$this->productPresenter->vendor->name,
-                    'categoryname'=>$this->productPresenter->category->name,
-                    'props' => $props,
-                    'groups' => $groups
-                    ));
+        $vendorname = $this->productPresenter->vendor->name;
+        $categoryname = $this->productPresenter->category->name;
+        return View::make('store.product')->with(compact(
+                                            'product',
+                                            'props',
+                                            'vendorname',
+                                            'categoryname',
+                                            'groups'
+                                            ));
     }
 
 

@@ -42,6 +42,8 @@
 			<address>
 			  <strong>{{{$vendorname}}}</strong><br>
 			  {{{$vendor->address}}}<br>
+			  {{{$vendor->city}}}<br>
+			  {{{DB::table('states')->find($vendor->state)->state}}}<br>
 			  <span class="glyphicon glyphicon-earphone"></span> 123456789<br>
 			  <a href="mailto:#">{{{$vendor->email}}}</a>
 			</address>

@@ -22,16 +22,24 @@ class ProductPresenter{
 		$this->productmodel = Product::orderBy('updated_at','desc');
 	}
 
-    // $this->where('category', 'Suits')
-	public function where($fieldname, $fieldvalue=null)
-	{
-		if(is_null($fieldvalue)) return $this;
-		if($fieldvalue==Ballr::get('allName')) return $this;
-		$field = $fieldname::where('name',$fieldvalue)->firstOrFail();
-		$this->productmodel->where($fieldname.'_id', $field->id);
-        $this->$fieldname = $field;
-		return $this;
-	}
+    public function whereVendor($vendorname=null)
+    {
+        if(is_null($vendorname)) return $this;
+        if($vendorname==Ballr::get('allName')) return $this;
+        $vendor = Vendor::where('name',$vendorname)->firstOrFail();
+        $this->productmodel->where('vendor_id', $vendor->id);
+        $this->vendor = $vendor;
+        return $this;
+    }
+
+    public function whereCategory($categoryname=null)
+    {
+        if(is_null($categoryname)) return $this;
+        $category = Category::where('name',$categoryname)->firstOrFail();
+        $this->productmodel->where('category_id', $category->id);
+        $this->category = $category;
+        return $this;
+    }
 
 
     public function getGroups($groupsize=null)
