@@ -40,7 +40,7 @@ Edit your Account
        </div>
         <div class="form-group">
             <label for="state" class="form-label">State</label>
-            {{ Form::select('state',State::statelist(),NULL, array('class'=>'form-control'))}}
+            {{ Form::select('state',DB::table('states')->orderBy('state')->lists('state', 'id'),NULL, array('class'=>'form-control'))}}
         </div>
    </div>
 

@@ -34,14 +34,14 @@
 <div class="col-md-9">
 		@yield('breadcrumb') 
 	<div class = "row"> <!-- About seller -->
-		<div class="col-md-6"> <!-- Main Image -->
+		<div class="col-md-3"> <!-- Main Image -->
 				<img src="{{asset(Ballr::getImage($vendor->image))}}" />
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-9">
 			<p>{{{$vendor->description}}}<p>
 			<address>
 			  <strong>{{{$vendorname}}}</strong><br>
-			  {{{$vendor->address}}}<br>
+			  <?php echo preg_replace('/[\n]([^$])/s', '<br>\1', e($vendor->address)) ?><br>
 			  {{{$vendor->city}}}<br>
 			  {{{DB::table('states')->find($vendor->state)->state}}}<br>
 			  <span class="glyphicon glyphicon-earphone"></span> 123456789<br>

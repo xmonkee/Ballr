@@ -15,12 +15,13 @@ class Vendor extends Eloquent implements UserInterface, RemindableInterface {
     	'description');
 
     public static $rules = array(
-    	'name' => 'required|unique:vendors,name',
+    	'name' => 'required|unique:vendors,name|min:3',
     	'email' => 'required|email|unique:vendors,email',
     	'password' => 'required|confirmed|min:5',	
 		'image' => 'image',
 		'state' => 'required',
 		'city' => 'required',
+		'address' => 'required|max:200',
 		'description' => 'min:10|max:200'
 	);
 
