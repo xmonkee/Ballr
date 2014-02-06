@@ -90,3 +90,4 @@ echo "CREATE USER 'ballr'@'localhost' IDENTIFIED BY 'thisis3love'" | mysql
 echo "GRANT ALL PRIVILEGES ON ballr.* TO 'ballr'@'localhost' IDENTIFIED BY 'thisis3love'" | mysql
 # Set up the database
 php artisan migrate
+php artisan db:seed
