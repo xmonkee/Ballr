@@ -16,5 +16,5 @@ Laravel framework
 MYSQL database
 Twitter Bootstrap
 Angular
-
+Vagrant
 
